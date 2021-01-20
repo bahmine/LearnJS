@@ -37,4 +37,42 @@ Episodes: ${episodeTitle},
 Duration: ${episodeDuration} minutes,
 Watched: ${hasBeenWatched? 'Alread':'Not Yet'}`;
 
+//les objets
+let episode = {
+    title : "The last movie",
+    duration : 30,
+    hasBeenWatched : true
+};
+document.querySelector('#episode-info-object').innerText = `
+    Episodes: ${episode.title},
+    duration: ${episode.duration} min,
+    watched: ${episode.hasBeenWatched ? 'Alreday':'loot at it'}`;
+//création d'une classe
+class Episode {
+    constructor (title,duration,etat) {
+        this.title = title;
+        this.duration = duration;
+        this.hasBeenWatched = etat;
+    }
+}
 
+let firstEpisode = new Episode ("E0",25,false);
+document.querySelector('#first-episode-info').innerText = `
+    Episodes: ${firstEpisode.title},
+    duration: ${firstEpisode.duration} min,
+    watched: ${firstEpisode.hasBeenWatched ? 'Alreday':'loot at it'}`;
+
+
+let secondEpisode = new Episode ("E1",24,true);
+document.querySelector('#second-episode-info').innerText = `
+    Episodes: ${secondEpisode.title},
+    duration: ${secondEpisode.duration} min,
+    watched: ${secondEpisode.hasBeenWatched ? 'Alreday':'loot at it'}`;
+
+let thirdEpisode = new Episode ("E3",30,true);
+document.querySelector('#third-episode-info').innerText = `
+    Episodes: ${thirdEpisode.title},
+    duration: ${thirdEpisode.duration} min,
+    watched: ${thirdEpisode.hasBeenWatched ? 'Alreday':'loot at it'}`;
+
+//les tableaux
