@@ -1,32 +1,44 @@
-//création d'une classe
 class Episode {
-    constructor (title,duration,etat) {
-        this.title = title;
-        this.duration = duration;
-        this.hasBeenWatched = etat;
+    constructor(title, duration, minutesWatched) {
+      this.title = title;
+      this.duration = duration;
+      
+      // Add conditions here
+      // =================================
+      if (minutesWatched === duration) {
+        this.hasBeenWatched = true;
+        this.watchedText = "Déjà regardé"
+      } else if (minutesWatched < duration) {
+        this.hasBeenWatched = false;
+      }
+      // =================================
     }
-}
-let firstEpisode = new Episode ("E0",25,false);
-let secondEpisode = new Episode ("E1",24,true);
-let thirdEpisode = new Episode ("E3",30,true);
+  }
+  
+  let firstEpisode = new Episode('Dark Beginnings', 45, 45);
+let secondEpisode = new Episode('The Mystery Continues', 45, 10);
+let thirdEpisode = new Episode('An Unexpected Climax', 60, 0);
 
-//les tableaux
-//let episodes = [firstEpisode, secondEpisode, thirdEpisode];
-let episodes = [];
-episodes.push (firstEpisode,secondEpisode,thirdEpisode,thirdEpisode,secondEpisode);
-episodes.pop ();//retire le dernier 
-let numberOfEpisodes = episodes.length;
+let episodes = [firstEpisode, secondEpisode, thirdEpisode];
 
-for (let i = 0; i < numberOfEpisodes; i ++) {
-    let newDiv =  document.createElement ('div');
-        newDiv.classList.add('series-frame');
-    let newTitle = document.createElement('h2');
-        newTitle.innerText = "The Story of Tau";
-    let newParagraph =  document.createElement('p');
-        newParagraph.innerText = `Episodes : ${episodes[i].title},
-        Duration: ${episodes[i].duration} min,
-        Watched : ${episodes[i].hasBeenWatched ? 'Already':'Not yet'}`;
-    newDiv.append (newTitle);
-    newDiv.append (newParagraph);
-    document.querySelector('body').append (newDiv);
+const body = document.querySelector('body');
+
+for(let i = 0; i < 12; i++) {
+  let newDiv = document.createElement('div');
+  newDiv.classList.add('series-frame');
+  let newTitle = document.createElement('h2');
+  newTitle.innerText = 'The Story of Tau';
+  let newParagraph = document.createElement('p');
+  newParagraph.innerText = `${episodes[i].title}
+${episodes[i].duration} minutes
+${episodes[i].watchedText}
+`;
+  newDiv.append(newTitle);
+  newDiv.append(newParagraph);
+  if (episodes[i].continueWatching) {
+    let newButton = document.createElement('button');
+    newButton.innerText = 'Continue watching';
+    newParagraph.append(newButton);
+  }
+  body.append(newDiv);
 }
