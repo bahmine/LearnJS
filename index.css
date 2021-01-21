@@ -31,3 +31,15 @@ body {
     margin: 30px;
     padding: 10px;
   }
+  #refresh {
+    float: right;
+    margin-right: 20px;
+    font-size: 1.2em;
+    font-weight: 200;
+    padding: 10px;
+  }
+  
+  #refresh:hover {
+    background-color: #000090;
+    cursor: pointer;
+  }
